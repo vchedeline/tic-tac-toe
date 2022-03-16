@@ -14,9 +14,19 @@ console.log("We Are LIVE")
 
 /*----- cached element references -----*/
 
+// message container - h1
 // the game squares
 // reset button
 
 /*----- event listeners -----*/
 
+// click on nine squares
+// click on reset button
+// BONUS - user initiates game start
+
 /*----- functions -----*/
+
+// initialize (start) game
+// render messages to the DOM
+// check for winner/ 3 in a row (main game logic)
+// handle user interaction

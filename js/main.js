@@ -4,7 +4,7 @@ console.log("We Are LIVE")
 const PLAYERS = {
   '1': 'X',
   '-1':'O',
-}
+};
 
 // winning combinations
 // 012
@@ -20,7 +20,7 @@ const COMBOS = [
   [2,5,8],
   [0,4,8],
   [2,4,6],
-]
+];
 /*----- app's state (variables) -----*/
 
 // where the users click (where to put an x or o) - make sure a square is not taken first
@@ -55,17 +55,37 @@ resetBtn.addEventListener("click", init);
 
 // initialize (start) game - init()
 function init() {
-  console.log("Init is working")  
+  // data set to kep track of player moves
+  board = new Array(9).fill(null); // [null, null...]
+  turn = 1; // x goes first
+  winner = null; // no winner at start of game
+  console.log("Init is working");  
 }
+
+// starts the game on page load
+init();
+
 // handle user interaction - handleMove()
-function handleMove() {
-  console.log("HandleMove works")
+function handleMove(evt) {
+  const squareNumber = parseInt(evt.target.dataset.square);
+  // console.log(`Square ${squareNumber} was clicked`);
+
+  board[squareNumber] = turn; // set index in the board area to claim spot
+  turn *= -1; // switch turn 
+  
+  // check for winner
+  winner = checkForWinner;
+
+  // render message to user
+  render();
 }
+
 // check for winner/ 3 in a row (main game logic)
 function checkForWinner() {
-  console.log("Checking for Winner...")
+  console.log("Checking for Winner...");
 }
+
 // render messages to the DOM
 function render() {
-  console.log("rendering...")
+  console.log("rendering...");
 }

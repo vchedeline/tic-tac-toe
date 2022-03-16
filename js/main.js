@@ -59,7 +59,10 @@ function init() {
   board = new Array(9).fill(null); // [null, null...]
   turn = 1; // x goes first
   winner = null; // no winner at start of game
-  console.log("Init is working");
+  board.forEach((element, index) => {
+    domSquares[index].textContent = "";
+  })
+  domMessage.textContent = "";
 }
 
 // starts the game on page load

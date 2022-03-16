@@ -2,6 +2,10 @@ body {
   background-color: blueviolet;
 }
 
+header {
+  color:aquamarine;
+  text-align: center;
+}
 main {
   height: 80vh;
   display: flex;

@@ -27,6 +27,9 @@ main {
   height: 100px ;
   width: 100px;
   background-color:crimson;
+  font-size: 50px;
+  text-align: center;
+  color:azure;
 }
 
 button {

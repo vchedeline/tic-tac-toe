@@ -59,7 +59,7 @@ function init() {
   board = new Array(9).fill(null); // [null, null...]
   turn = 1; // x goes first
   winner = null; // no winner at start of game
-  console.log("Init is working");  
+  console.log("Init is working");
 }
 
 // starts the game on page load
@@ -68,14 +68,18 @@ init();
 // handle user interaction - handleMove()
 function handleMove(evt) {
   const squareNumber = parseInt(evt.target.dataset.square);
-  // console.log(`Square ${squareNumber} was clicked`);
-
+  
+  if (board[squareNumber] || winner) {
+    return
+  }
+  
   board[squareNumber] = turn; // set index in the board area to claim spot
+ 
+  // check for winner
+  winner = checkForWinner();
+ 
   turn *= -1; // switch turn 
   
-  // check for winner
-  winner = checkForWinner;
-
   // render message to user
   render();
 }
@@ -83,9 +87,38 @@ function handleMove(evt) {
 // check for winner/ 3 in a row (main game logic)
 function checkForWinner() {
   console.log("Checking for Winner...");
+  for (let index in COMBOS) {
+    if(
+      board[COMBOS[index][0]] === turn &&
+      board[COMBOS[index][1]] === turn &&
+      board[COMBOS[index][2]] === turn
+    ) {
+      return turn;
+    }
+  }
+
+  if (board.includes(null)){
+    return null;
+  }
+  
+  return "tie";
 }
 
 // render messages to the DOM
 function render() {
-  console.log("rendering...");
+  // console.log("rendering...");
+  // puts x or o on the board
+  board.forEach((element, index) => {
+    domSquares[index].textContent = PLAYERS[element];
+  });
+  
+  if(!winner) {
+    // tells whose turn it is
+    domMessage.textContent =`${PLAYERS[turn]}'s turn`;
+  } else if (winner === "tie") {
+    // tells user it's a tie
+    domMessage.textContent = "It's A Tie!";
+  } else {
+    domMessage.textContent = `${PLAYERS[winner]} wins!`;
+  }
 }

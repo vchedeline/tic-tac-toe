@@ -15,10 +15,16 @@ main {
   grid-template-columns: 100px 100px 100px;
   gap: 20px;
   background-color: antiquewhite;
+  margin-bottom: 30px;
 }
 
 .square {
   height: 100px ;
   width: 100px;
   background-color:crimson;
+}
+
+button {
+  font-size: 20px;
+  background-color: chartreuse;
 }

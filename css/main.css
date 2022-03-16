@@ -1,3 +1,24 @@
 body {
   background-color: blueviolet;
 }
+
+main {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  gap: 20px;
+  background-color: antiquewhite;
+}
+
+.square {
+  height: 100px ;
+  width: 100px;
+  background-color:crimson;
+}
